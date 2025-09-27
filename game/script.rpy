@@ -33,12 +33,24 @@ label start:
 
     l "Please, my house is coming apart and my friend is under the rubble! Please! Help!"
 
+    "Will you help this lady?"
+menu:
+    "Yes.":
+        jump choice1_yes
+
+    "No.":
+        jump choice1_no
+label choice1_yes:
+    $ menu_flag = True
+
     mc "We then rush to the scene."
+         
+    return
 
-    scene bg apocolyptic night
-    
-    "An hour later, things are resolved."
+label choice1_no:
+    $ menu_flag = False
 
+    "You go home."
 
 
 
