@@ -5,6 +5,8 @@
 
 define e = Character("Eileen")
 
+define l = Character("lady")
+define mc = Character("main")
 
 # The game starts here.
 
@@ -24,9 +26,21 @@ label start:
 
     # These display lines of dialogue.
 
-    e "This game is called sanity."
 
-    e "Once you add a story, pictures, and music, you can release it to the world!"
+    l "Hello? I need help!!"
+
+    mc "A lady in distress comes running towards me."
+
+    l "Please, my house is coming apart and my friend is under the rubble! Please! Help!"
+
+    mc "We then rush to the scene."
+
+    scene bg apocolyptic night
+    
+    "An hour later, things are resolved."
+
+
+
 
     # This ends the game.
 
