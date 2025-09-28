@@ -36,11 +36,11 @@ label start:
     mc "I look out over to the vast oceans, and think about the now ruined, post-apocalyptic world, when-"
     l "Hello? I need help!!"
 
-    mc "A lady in distress comes running towards me."
+    mc "A lady in distress appears in front of me."
 
     l "Please, my house is coming apart and my friend is under the rubble! Please! Help!"
 
-    "Will you help this lady or not?"
+    "Will you help this lady, or not?"
 
 menu:
     "Yes.":
@@ -98,8 +98,8 @@ label choice3_yea:
     e "*Gasp* Thank you! Oh my gosh, I thought I was going to-"
     e "Huh? Where'd they go...?"
     "Your magic ran out... you are no longer a part of this world."
-    "Game Over"
-    return
+scene game_over
+    
 
 label choice4_nou:
     $ menu_flag = False
@@ -109,9 +109,9 @@ label choice4_nou:
     #add mc sad
     "You chose to save yourself."
     "You chose to leave them."
-    mc "I still have 10%% of my magic left... but that changes nothing."
+    mc "I still have a bit of my magic left... but that changes nothing."
     "The overwhelming guilt towers over you, and you feel even worse than before."
-    "Game Over"
+scene game_over
 
 
 
