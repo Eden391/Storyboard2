@@ -29,7 +29,7 @@ label start:
     # replace it by adding a file named "eileen happy.png" to the images
     # directory.
 
-    show eileen happy
+    show npc1 distress
 
     # These display lines of dialogue.
 
@@ -55,24 +55,31 @@ label choice1_yes:
     mc "I see her friend underneath a large, thick piece of concrete which seemed to have come from the roof."
     mc "an hour later, all is finally resolved."
     l "Thank you! Thank you so much!"
-    hide eileen happy 
+    hide npc1 distress
     show main char happy:
         xalign 0.5
         yalign 1.0
 
     mc "No worries. It's all I'm here for."
     
-    "Your health has gone down by 10. The more you give people your magic, the more your health goes down."
+    "Your health (20) has gone down by 10. The more you give people your magic, the more your health goes down."
     "If you decide to stop giving people your magic...then so be it."
-         
-    return
+
+    jump person2     
 
 label choice2_no:
     $ menu_flag = False
-
-    "Your health is currently at 100. The more people you give your magic to, the more your health decreases each time by 10.Be careful. If your health goes down to zero, it is game over."
+    hide npc1 distress
+    show main char happy
+    "Your health is currently at 20. The more people you give your magic to, the more your health decreases each time by 10.Be careful. If your health goes down to zero, it is game over."
     "If you choose not to help others...so be it."
 
-    return
+label person2:
+    scene apocalyptic morning bg
+    show eileen happy
+    e "Hey!! Hello!? I really need some help over here!"
+    e ""
+
+
 
     # This ends the game.
