@@ -70,18 +70,20 @@ label choice1_yes:
 label choice2_no:
     $ menu_flag = False
     hide npc1 distress
-    show main char happy
+    show mc_very_distress
     "Your health is currently at 20. The more people you give your magic to, the more your health decreases each time by 10.Be careful. If your health goes down to zero, it is game over."
     "If you choose not to help others...so be it."
 
 label person2:
     scene apocalyptic morning bg
-    show main char happy
+    show mc_distress
     mc "It is another day, and I am left feeling uneasy.. as if something is wrong with myself."
     mc "As I walk through fields of grass and tall plants, I hear voices coming from a small house."
     e "AARGH!! Hello!? ANYONE?? I really need some help over here!"
     mc "..Another person?"
     mc "It sounds as if they are stuck."
+    hide mc_distress
+    show npc2_distress
     e "Ple-aSe! I'm stUck and the vines.. aRe strangling me!!"
     "Will you decide to help this person, and lose the last piece you have of yourself?"
 
@@ -91,28 +93,38 @@ menu:
 
     "No, I will save myself.":
         jump choice4_nou
+
 label choice3_yea:
     $ menu_flag = True
     "You chose to save them."
-    show eileen happy
+    hide main char happy
+    #add npc2 calm
     e "*Gasp* Thank you! Oh my gosh, I thought I was going to-"
     e "Huh? Where'd they go...?"
     "Your magic ran out... you are no longer a part of this world."
-scene game_over
-    
+    hide npc2_distress
+    show mc_ayoo
+    "..."
+    jump end
+
 
 label choice4_nou:
     $ menu_flag = False
     e "You're- are you..."
     e "I thought...!"
     "The vines strangle him right in front of you."
-    #add mc sad
+    hide npc2_distress
+    show mc_distress
     "You chose to save yourself."
     "You chose to leave them."
     mc "I still have a bit of my magic left... but that changes nothing."
     "The overwhelming guilt towers over you, and you feel even worse than before."
-scene game_over
 
+label end:
+    scene bg game over
+    "You lost."
+
+return
 
 
     # This ends the game.
