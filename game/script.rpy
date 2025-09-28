@@ -14,6 +14,7 @@ label start:
     python:
         name = renpy.input ("What is your name, magical person?")
         name = name.strip()
+        hp = 20
     
     define mc = Character("[name]")
 
@@ -61,16 +62,27 @@ label choice1_yes:
         yalign 1.0
 
     mc "No worries. It's all I'm here for."
-    
+    hide main char happy
+    show mc_distress
+    show health_10:
+        xalign 1.0
+        yalign 0.0
+    python:
+        hp -= 10
     "Your health (20) has gone down by 10. The more you give people your magic, the more your health goes down."
     "If you decide to stop giving people your magic...then so be it."
-
+    
     jump person2     
 
 label choice2_no:
     $ menu_flag = False
     hide npc1 distress
     show mc_very_distress
+    show health_20:
+        xalign 1.0
+        yalign 0.0
+    python:
+        hp = 20
     "Your health is currently at 20. The more people you give your magic to, the more your health decreases each time by 10.Be careful. If your health goes down to zero, it is game over."
     "If you choose not to help others...so be it."
 
@@ -98,12 +110,16 @@ label choice3_yea:
     $ menu_flag = True
     "You chose to save them."
     hide main char happy
-    #add npc2 calm
-    e "*Gasp* Thank you! Oh my gosh, I thought I was going to-"
-    e "Huh? Where'd they go...?"
-    "Your magic ran out... you are no longer a part of this world."
     hide npc2_distress
-    show mc_ayoo
+    show npc2_thanks
+    e "*Gasp* Thank you! Oh my gosh, I thought I was going to-"
+    e "Hello?"
+    show npc2huuh
+    "Your magic ran out... you are no longer a part of this world."
+    hide npc2huuh
+    show mc ayo:
+        xalign 0.75
+        yalign 1.0
     "..."
     jump end
 
@@ -114,7 +130,7 @@ label choice4_nou:
     e "I thought...!"
     "The vines strangle him right in front of you."
     hide npc2_distress
-    show mc_distress
+    show mc_very_distress
     "You chose to save yourself."
     "You chose to leave them."
     mc "I still have a bit of my magic left... but that changes nothing."
@@ -123,6 +139,12 @@ label choice4_nou:
 label end:
     scene bg game over
     "You lost."
+
+#things left to do:
+#need to add choice for: do not help lady but help guy
+#ADDED HP VARIABLE (if hp = 20 when helping guy, other ending)
+#STILL NEED TO ADD TITLE (PLEASE) OR ELSE GO BACK TO SANITY
+#sound design (i have a sound app on my ipad if nothing goes right)
 
 return
 
