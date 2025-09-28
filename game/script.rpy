@@ -5,7 +5,7 @@
 
 define e = Character("Eileen")
 
-define l = Character("lady")
+define l = Character("Lady")
 
 # The game starts here.
 
@@ -50,12 +50,12 @@ menu:
         jump choice2_no
 label choice1_yes:
     $ menu_flag = True
-
     mc "We then rush to the scene."
     mc "I see her friend underneath a large, thick piece of concrete which seemed to have come from the roof."
     mc "an hour later, all is finally resolved."
+    show npc1 happy
     l "Thank you! Thank you so much!"
-    hide npc1 distress
+    hide npc1 happy
     show main char happy:
         xalign 0.5
         yalign 1.0
@@ -76,9 +76,42 @@ label choice2_no:
 
 label person2:
     scene apocalyptic morning bg
+    show main char happy
+    mc "It is another day, and I am left feeling uneasy.. as if something is wrong with myself."
+    mc "As I walk through fields of grass and tall plants, I hear voices coming from a small house."
+    e "AARGH!! Hello!? ANYONE?? I really need some help over here!"
+    mc "..Another person?"
+    mc "It sounds as if they are stuck."
+    e "Ple-aSe! I'm stUck and the vines.. aRe strangling me!!"
+    "Will you decide to help this person, and lose the last piece you have of yourself?"
+
+menu:
+    "Yes.":
+        jump choice3_yea
+
+    "No, I will save myself.":
+        jump choice4_nou
+label choice3_yea:
+    $ menu_flag = True
+    "You chose to save them."
     show eileen happy
-    e "Hey!! Hello!? I really need some help over here!"
-    e ""
+    e "*Gasp* Thank you! Oh my gosh, I thought I was going to-"
+    e "Huh? Where'd they go...?"
+    "Your magic ran out... you are no longer a part of this world."
+    "Game Over"
+    return
+
+label choice4_nou:
+    $ menu_flag = False
+    e "You're- are you..."
+    e "I thought...!"
+    "The vines strangle him right in front of you."
+    #add mc sad
+    "You chose to save yourself."
+    "You chose to leave them."
+    mc "I still have 10%% of my magic left... but that changes nothing."
+    "The overwhelming guilt towers over you, and you feel even worse than before."
+    "Game Over"
 
 
 
