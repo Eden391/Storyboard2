@@ -53,7 +53,7 @@ label choice1_yes:
     $ menu_flag = True
     mc "We then rush to the scene."
     mc "I see her friend underneath a large, thick piece of concrete which seemed to have come from the roof."
-    mc "an hour later, all is finally resolved."
+    mc "An hour later, all is finally resolved."
     show npc1 happy
     l "Thank you! Thank you so much!"
     hide npc1 happy
@@ -89,6 +89,7 @@ label choice2_no:
 label person2:
     scene apocalyptic morning bg
     show mc_distress
+    play sound "Grass 1"
     mc "It is another day, and I am left feeling uneasy.. as if something is wrong with myself."
     mc "As I walk through fields of grass and tall plants, I hear voices coming from a small house."
     e "AARGH!! Hello!? ANYONE?? I really need some help over here!"
