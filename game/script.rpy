@@ -6,22 +6,23 @@
 define e = Character("Eileen")
 
 define l = Character("lady")
-define mc = Character("main")
 
 # The game starts here.
 
 label start:
 
-python:
-    name = renpy.input ("What is your name?")
-    name = name.strip() or "Bob"
+    python:
+        name = renpy.input ("What is your name?")
+        name = name.strip()
+    
+    define mc = Character("[name]")
 
 
     # Show a background. This uses a placeholder by default, but you can
     # add a file (named either "bg room.png" or "bg room.jpg") to the
     # images directory to show it.
 
-    scene bg apocolyptic night
+    scene bg apocolyptic
 
 
     # This shows a character sprite. A placeholder is used, but you can
